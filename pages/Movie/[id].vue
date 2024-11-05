@@ -18,7 +18,7 @@
 const router = useRoute()
 const id = ref(router.params.id)
 const streamingLink = ref(
-  `https://streamapi.idnmarket.biz.id/embed/movie?tmdb=533535`
+  `https://vidsrc.xyz/embed/movie?tmdb=${id.value}&ds_lang=vi`
 )
 </script>
 
