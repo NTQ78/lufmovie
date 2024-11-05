@@ -59,18 +59,18 @@ onMounted(async () => {
   height: 50%;
 }
 .image-container img {
-  width: 80px;
-  height: 100px;
+  width: 100px;
+  height: 120px;
   border-radius: 5px;
 }
 .image-container > .v-skeleton-loader {
-  width: 80px;
-  height: 100px;
+  width: 100px;
+  height: 120px;
   border-radius: 5px;
 }
 .image-container:deep() {
   .v-skeleton-loader__image {
-    height: 100px;
+    height: 120px;
   }
 }
 
@@ -96,90 +96,70 @@ onMounted(async () => {
 }
 
 @media (min-width: 960px) and (max-width: 1279px) {
-  .card {
-    width: 170px;
-    height: 220px;
-
-    .image-container img {
-      width: 60px;
-      height: 80px;
-    }
-    .image-container > .v-skeleton-loader {
-      width: 60px;
-      height: 80px;
-    }
-    .image-container:deep() {
-      .v-skeleton-loader__image {
-        height: 80px;
-      }
+  .image-container img {
+    width: 90px;
+    height: 120px;
+  }
+  .image-container > .v-skeleton-loader {
+    width: 90px;
+    height: 120px;
+  }
+  .image-container:deep() {
+    .v-skeleton-loader__image {
+      height: 120px;
     }
   }
 }
 
 @media (min-width: 600px) and (max-width: 959px) {
-  .card {
-    width: 150px;
-    height: 200px;
-
-    .image-container img {
-      width: 50px;
-      height: 70px;
-    }
-    .image-container > .v-skeleton-loader {
-      width: 50px;
-      height: 70px;
-    }
-    .image-container:deep() {
-      .v-skeleton-loader__image {
-        height: 70px;
-      }
+  .image-container img {
+    width: 80px;
+    height: 100px;
+  }
+  .image-container > .v-skeleton-loader {
+    width: 80px;
+    height: 100px;
+  }
+  .image-container:deep() {
+    .v-skeleton-loader__image {
+      height: 100px;
     }
   }
 }
 
 @media (max-width: 599px) {
-  .card {
-    width: 90px;
-    height: 150px;
-
-    .image-container img {
-      width: 40px;
-      height: 60px;
-    }
-    .image-container > .v-skeleton-loader {
-      width: 40px;
-      height: 60px;
-    }
-    .image-container:deep() {
-      .v-skeleton-loader__image {
-        height: 60px;
-      }
+  .image-container img {
+    width: 60px;
+    height: 80px;
+  }
+  .image-container > .v-skeleton-loader {
+    width: 60px;
+    height: 80px;
+  }
+  .image-container:deep() {
+    .v-skeleton-loader__image {
+      height: 80px;
     }
   }
 }
-@media (max-width: 361px) {
-  .card {
-    width: 60px;
-    height: 130px;
-
-    .image-container img {
-      width: 30px;
+@media (max-width: 376px) {
+  .image-container img {
+    width: 50px;
+    height: 70px;
+  }
+  .image-container > .v-skeleton-loader {
+    width: 50px;
+    height: 70px;
+  }
+  .image-container:deep() {
+    .v-skeleton-loader__image {
       height: 40px;
     }
-    .image-container > .v-skeleton-loader {
-      width: 30px;
-      height: 40px;
-    }
-    .image-container:deep() {
-      .v-skeleton-loader__image {
-        height: 40px;
-      }
-    }
+  }
 
-    .content {
-      h4 {
-        font-size: 0.8rem;
-      }
+  .content {
+    h4 {
+      font-size: 0.8rem;
     }
   }
 }

@@ -1,19 +1,20 @@
 <template>
   <v-container class="my-carousel mb-16">
     <v-carousel
+      v-if="ListMovies.length"
       :show-arrows="false"
       height="600"
       hide-delimiter-background
       cycle
-      interval="100000"
+      interval="5000"
       continuous
       delimiter-icon="mdi-minus"
       touch
       color="transparent"
     >
-      <div v-for="(item, i) in src" :key="i">
+      <div v-for="(item, i) in ListMovies" :key="i">
         <v-carousel-item
-          :src="item.source"
+          :src="`https://image.tmdb.org/t/p/original${item?.backdrop_path}`"
           cover
           rounded="lg"
           max-height="600"
@@ -21,9 +22,9 @@
         >
           <div class="blur"></div>
           <div class="content text-center">
-            <h2 class="font-weight-black">{{ item.title }}</h2>
+            <h2 class="font-weight-black">{{ item.original_title }}</h2>
             <p class="text-body-1 text-grey">
-              {{ item.description }}
+              {{ item.overview }}
             </p>
             <v-btn-group class="">
               <v-btn class="mr-4" color="primary" size="small">
@@ -44,26 +45,16 @@
 </template>
 
 <script setup lang="ts">
-const src = [
-  {
-    source: '_nuxt/assets/images/AdobeStock_825470510_Preview.jpeg',
-    title: 'John Wick',
-    description:
-      'John Wick is on the run after killing a member of the international assassins guild, and with a $14 million price tag on his head, he is the target of hit'
-  },
-  {
-    source: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-    title: 'Sky',
-    description:
-      'Sky is everything that lies above the surface of the Earth, including the atmosphere and outer space'
-  },
-  {
-    source: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-    title: 'Bird',
-    description:
-      'Birds are a group of warm-blooded vertebrates constituting the class Aves, characterised by feathers, toothless beaked jaws, the laying of hard-shelled eggs, a high metabolic rate, a four-chambered heart, and a strong yet lightweight skeleton'
+const { $api } = useNuxtApp() as any
+const ListMovies = ref([]) as Ref<any[]>
+onMounted(async () => {
+  try {
+    const { data } = await $api.get('/movie/popular?language=en-US&page=1')
+    ListMovies.value = data.results.slice(3, 6)
+  } catch (error) {
+    console.log(error)
   }
-]
+})
 </script>
 
 <style lang="scss" scoped>

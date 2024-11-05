@@ -24,7 +24,7 @@
             <div class="blur"></div>
 
             <div class="">
-              <HomeMovieCardSubImage :id="item?.id" />
+              <HomeMovieCardGenresSubImage :id="item?.id" />
             </div>
             <div class="content">
               <h4 class="">{{ item.name }}</h4>
@@ -90,8 +90,8 @@ onMounted(() => {
 <style lang="scss" scoped>
 .card {
   position: relative;
-  width: 220px;
-  height: 260px; /* Đặt chiều cao cho thẻ card */
+  width: 260px;
+  height: 340px; /* Đặt chiều cao cho thẻ card */
   padding: 20px;
   background-color: #1a1a1a;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -161,8 +161,8 @@ onMounted(() => {
 
 @media (min-width: 960px) and (max-width: 1279px) {
   .card {
-    width: 170px;
-    height: 220px;
+    width: 200px;
+    height: 280px;
 
     .image-container img {
       width: 60px;
@@ -173,8 +173,8 @@ onMounted(() => {
 
 @media (min-width: 600px) and (max-width: 959px) {
   .card {
-    width: 150px;
-    height: 200px;
+    width: 180px;
+    height: 220px;
 
     .image-container img {
       width: 50px;
@@ -185,8 +185,8 @@ onMounted(() => {
 
 @media (max-width: 599px) {
   .card {
-    width: 90px;
-    height: 150px;
+    width: 120px;
+    height: 180px;
 
     .image-container img {
       width: 40px;
@@ -194,10 +194,27 @@ onMounted(() => {
     }
   }
 }
-@media (max-width: 361px) {
+@media (max-width: 376px) {
   .card {
-    width: 60px;
-    height: 130px;
+    width: 100px !important;
+    height: 150px !important;
+
+    .image-container img {
+      width: 30px;
+      height: 40px;
+    }
+
+    .content {
+      h4 {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+@media (max-width: 321px) {
+  .card {
+    width: 85px !important;
+    height: 160px !important;
 
     .image-container img {
       width: 30px;

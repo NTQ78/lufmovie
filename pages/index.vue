@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-container class="pa-6 pa-md-12">
+    <v-container class="pa-0">
       <HomeCarousel />
       <HomeFrame pageTitle="Movies">
         <div class="w-100">
@@ -11,7 +11,16 @@
             :slot="item.slot"
           >
             <template #genre>
-              <HomeMovieCard />
+              <HomeMovieCardGenres />
+            </template>
+            <template #popular>
+              <HomeMovieCardPopular />
+            </template>
+            <template #topRated>
+              <HomeMovieCardTopRated />
+            </template>
+            <template #newRelease>
+              <HomeMovieCardUpComing />
             </template>
           </HomeMovieSlider>
         </div>
@@ -48,7 +57,7 @@ const ListTitle = ref<Title[]>([
     slot: 'genre'
   },
   {
-    title: 'Popular',
+    title: 'Popular Top 10 In Genres',
     slot: 'popular'
   },
   {
