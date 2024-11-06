@@ -33,7 +33,7 @@ const { pageTitle } = props
 
   .button {
     position: absolute;
-    top: -2%;
+    top: -0.95%;
     left: 5%;
   }
 }

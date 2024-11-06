@@ -20,7 +20,7 @@
     >
       <SwiperSlide v-for="(item, index) in ListRated" :key="index">
         <div v-if="loader">
-          <div class="card">
+          <div class="card" @click="nextPage(item)">
             <div class="blur"></div>
 
             <div class="">
@@ -52,6 +52,7 @@ const display = useDisplay()
 const { $api } = useNuxtApp() as any
 const ListRated = ref<[]>([]) as any
 const loader = ref<boolean>(false)
+const router = useRouter()
 //FUNCTIONS
 const checkDisplaySize = () => {
   if (display.xs.value) {
@@ -69,7 +70,7 @@ const checkDisplaySize = () => {
 
 const getListRated = async () => {
   try {
-    const { data } = await $api.get('/movie/top_rated?language=en-US&page=1')
+    const { data } = await $api.get('/movie/top_rated?language=vi-VI&page=1')
     //slice and randomize the genres
     ListRated.value = data.results
   } catch (error) {
@@ -77,6 +78,9 @@ const getListRated = async () => {
   } finally {
     loader.value = true
   }
+}
+const nextPage = (item: any) => {
+  router.push(`/movie/${item.id}`)
 }
 
 onMounted(() => {

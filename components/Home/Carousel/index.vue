@@ -49,7 +49,7 @@ const { $api } = useNuxtApp() as any
 const ListMovies = ref([]) as Ref<any[]>
 onMounted(async () => {
   try {
-    const { data } = await $api.get('/movie/popular?language=en-US&page=1')
+    const { data } = await $api.get('/movie/popular?language=vi-VI&page=1')
     ListMovies.value = data.results.slice(3, 6)
   } catch (error) {
     console.log(error)

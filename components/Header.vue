@@ -1,8 +1,9 @@
 <template>
   <header class="header">
-    <div class="logo">
-      <img src="images/logo.png" alt="Logo" />
-    </div>
+    <nuxt-link to="/">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" /></div
+    ></nuxt-link>
     <v-text-field
       class="text-field"
       append-inner-icon="mdi-magnify"
