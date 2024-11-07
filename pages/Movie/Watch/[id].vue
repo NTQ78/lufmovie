@@ -16,17 +16,22 @@
               {{ movie.title }}
             </v-breadcrumbs-item>
             <v-breadcrumbs-divider></v-breadcrumbs-divider>
-            <v-breadcrumbs-item>Watching</v-breadcrumbs-item>
+            <v-breadcrumbs-item color="red">Watching</v-breadcrumbs-item>
           </v-breadcrumbs>
         </v-col>
         <v-col cols="12">
-          <iframe
-            :src="streamingLink"
-            width="100%"
-            height="500"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+          <div class="embet-video">
+            <iframe
+              :src="streamingLink"
+              frameborder="0"
+              allowfullscreen
+              picture-in-picture
+              autoplay
+              aspect-ratio="16/9"
+              width="100%"
+              :height="setHeight"
+            ></iframe>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -34,13 +39,24 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify/lib/framework.mjs'
+
+// Variables
 const router = useRoute()
+const display = useDisplay()
 const id = ref(router.params.id)
+
 const streamingLink = ref(
-  `https://vidsrc.xyz/embed/movie?tmdb=${id.value}&ds_lang=vi`
+  `https://vidsrc.xyz/embed/movie?tmdb=${id.value}&ds_lang=vi&ds_player=auto&ds_theme=dark&ds_fullscreen=true&ds_autoplay=true&ds_mute=true&ds_seekbar=true&ds_seekbar_color=red&ds_seekbar_height=5&ds_seekbar_buffer=true&ds_seekbar_buffer_color=grey&ds_seekbar_buffer_opacity=0.5&ds_seekbar_background=true&ds_seekbar_background_color=black&ds_seekbar_background_opacity=0.5&ds_seekbar_time=true&ds_seekbar_time_color=white&ds_seekbar_time_background=true&ds_seekbar_time_background_color=black&ds_seekbar_time_background_opacity=0.5&ds_seekbar_time_fontsize=12&ds_seekbar_time_fontweight=normal&ds_seekbar_time_fontfamily=Arial&ds_seekbar_time_padding=5&ds_seekbar_time_margin=5&ds_seekbar_time_border_radius=5&ds_seekbar_time_border_width=1&ds_seekbar_time_border_color=white&ds_seekbar_time_border_style=solid&ds_seekbar_time_opacity=1&ds_seekbar_time_hover_color=red&ds_seekbar_time_hover_background_color=black&ds_seekbar_time_hover_opacity=0.5&ds_seekbar_time_hover_fontsize=12&ds_seekbar_time_hover_fontweight=normal&ds_seekbar_time_hover_fontfamily=Arial&ds_seekbar_time_hover_padding=5&ds_seekbar_time_hover_margin=5&ds_seekbar_time_hover_border_radius=5&ds_seekbar_time_hover_border_width=1&ds_seekbar_time_hover_border_color=white&ds_seekbar_time_hover_border_style=solid&ds_seekbar_time_hover_opacity=1&ds_seekbar_time_hover_hover_color=red&ds_seekbar_time_hover_hover_background_color=black&ds_seekbar_time_hover_hover_opacity=0.5&ds_seekbar_time_hover_hover_fontsize=12&ds_seekbar_time_hover_hover_fontweight=normal&ds_seekbar_time_hover_hover_fontfamily=Arial&ds_seekbar_time_hover_hover_padding=5&ds_seekbar_time_hover_hover_margin=5&ds_seekbar_time_hover_hover_border_radius=5&ds_seekbar_time_hover_hover_border_width=1&ds_seekbar_time_hover_hover_border_color=white&ds_seekbar_time_hover_hover_border_style=solid&ds_seekbar_time_hover_hover_opacity=1&ds_seekbar_time_hover_hover_hover_color=red&ds_seekbar_time_hover_hover_hover_background_color=black&ds_seekbar_time_hover_hover_hover_opacity=0.5`
 )
 const { $api } = useNuxtApp() as any
 const movie = ref({}) as Ref<any>
+
+// Methods
+const setHeight = computed(() => {
+  return display.xs.value ? 200 : 600
+})
+
 onMounted(async () => {
   try {
     const { data } = await $api.get(
@@ -53,4 +69,13 @@ onMounted(async () => {
 })
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.embed-video {
+  width: 100%;
+  overflow: hidden;
+
+  iframe {
+    width: 100%;
+  }
+}
+</style>

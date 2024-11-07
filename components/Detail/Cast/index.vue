@@ -34,7 +34,7 @@
               <div class="content">
                 <div class="title">
                   <v-chip>
-                    {{ item.name }}
+                    {{ item.character }}
                   </v-chip>
                 </div>
               </div>
@@ -42,7 +42,7 @@
           </div>
           <div class="character">
             <v-chip size="small" append-icon="mdi-star">
-              {{ item.character }}
+              {{ item.name }}
             </v-chip>
           </div>
         </div>
@@ -105,6 +105,9 @@ const { credit } = toRefs(props)
 @media screen and (max-width: 600px) {
   .cast h1 {
     font-size: 1.2rem;
+  }
+  .content {
+    display: none;
   }
 }
 @media screen and (max-width: 390px) {

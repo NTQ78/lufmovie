@@ -26,28 +26,38 @@
             <p class="text-body-1 text-grey">
               {{ item.overview }}
             </p>
-            <v-btn-group class="">
-              <v-btn class="mr-4" color="primary" size="small" rounded="lg">
-                <v-icon class="mr-2"> mdi-google-play </v-icon>
-                Play Now</v-btn
-              >
-              <v-btn class="mr-4" color="black" icon="mdi-plus" rounded="lg">
-              </v-btn>
-              <v-btn
-                class="mr-4"
-                color="black"
-                icon="mdi-thumb-up-outline"
-                rounded="lg"
-              >
-              </v-btn>
-              <v-btn
-                class="mr-4"
-                color="black"
-                icon="mdi-heart-outline"
-                rounded="lg"
-              >
-              </v-btn>
-            </v-btn-group>
+            <div class="button mt-2">
+              <div class="first-btn">
+                <v-btn
+                  color="primary"
+                  prepend-icon="mdi-google-play"
+                  rounded="lg"
+                  size="large"
+                  :width="display.xs ? '250px' : 'auto'"
+                  :to="`watch/${item.id}`"
+                >
+                  Play Now
+                </v-btn>
+              </div>
+              <div class="d-flex flex-row">
+                <v-btn class="mr-4" color="black" icon="mdi-plus" rounded="lg">
+                </v-btn>
+                <v-btn
+                  class="mr-4"
+                  color="black"
+                  icon="mdi-thumb-up-outline"
+                  rounded="lg"
+                >
+                </v-btn>
+                <v-btn
+                  class="mr-4"
+                  color="black"
+                  icon="mdi-heart-outline"
+                  rounded="lg"
+                >
+                </v-btn>
+              </div>
+            </div>
           </div>
         </v-carousel-item>
       </div>
@@ -56,12 +66,15 @@
 </template>
 
 <script setup lang="ts">
+import { useDisplay } from 'vuetify/lib/framework.mjs'
 const { $api } = useNuxtApp() as any
 const ListMovies = ref([]) as Ref<any[]>
+const display = useDisplay()
+
 onMounted(async () => {
   try {
     const { data } = await $api.get('/movie/popular?language=vi-VI&page=1')
-    ListMovies.value = data.results.slice(1, 4)
+    ListMovies.value = data.results.slice(0, 3)
   } catch (error) {
     console.log(error)
   }
@@ -115,6 +128,16 @@ onMounted(async () => {
     align-items: center;
     gap: 0.5rem;
   }
+}
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.button .first-btn {
+  margin-right: 1rem;
 }
 
 @media screen and (max-width: 1024px) {
