@@ -29,7 +29,7 @@
               autoplay
               aspect-ratio="16/9"
               width="100%"
-              :height="setHeight"
+              :height="height"
             ></iframe>
           </div>
         </v-col>
@@ -46,6 +46,7 @@
 </template>
 
 <script setup lang="ts">
+import { set } from 'nuxt/dist/app/compat/capi'
 import { useDisplay } from 'vuetify/lib/framework.mjs'
 
 // Variables
@@ -58,13 +59,21 @@ const streamingLink = ref(
 )
 const { $api } = useNuxtApp() as any
 const movie = ref({}) as Ref<any>
-
+const height = ref(0)
 // Methods
-const setHeight = computed(() => {
-  return display.xs.value ? 200 : 600
-})
 
 onMounted(async () => {
+  setTimeout(() => {
+    if (display.xs.value) {
+      height.value = 400
+    } else {
+      height.value = 700
+    }
+  }, 500)
+  const turnoff = document.getElementById('dontfoid')
+  if (turnoff) {
+    turnoff.style.position = 'unset'
+  }
   try {
     const { data } = await $api.get(
       `/movie/${id.value}?language=vi-VI&append_to_response=videos,credits,reviews,similar,recommendations,ratings`

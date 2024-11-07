@@ -22,10 +22,10 @@
         >
           <div class="blur"></div>
           <div class="content text-center">
-            <h2 class="font-weight-black">{{ item.original_title }}</h2>
-            <p class="text-body-1 text-grey">
+            <h2 class="text-h3 font-weight-black">{{ item.original_title }}</h2>
+            <!-- <p class="text-body-1 text-grey">
               {{ item.overview }}
-            </p>
+            </p> -->
             <div class="button mt-2">
               <div class="first-btn">
                 <v-btn
@@ -34,7 +34,7 @@
                   rounded="lg"
                   size="large"
                   :width="display.xs ? '250px' : 'auto'"
-                  :to="`watch/${item.id}`"
+                  :to="`/movie/watch/${item.id}`"
                 >
                   Play Now
                 </v-btn>
@@ -114,7 +114,7 @@ onMounted(async () => {
 
   .content {
     position: absolute;
-    bottom: -10%;
+    bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
@@ -126,7 +126,7 @@ onMounted(async () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 }
 .button {
