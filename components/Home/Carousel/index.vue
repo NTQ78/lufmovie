@@ -27,14 +27,25 @@
               {{ item.overview }}
             </p>
             <v-btn-group class="">
-              <v-btn class="mr-4" color="primary" size="small">
+              <v-btn class="mr-4" color="primary" size="small" rounded="lg">
                 <v-icon class="mr-2"> mdi-google-play </v-icon>
                 Play Now</v-btn
               >
-              <v-btn class="mr-4" color="black" icon="mdi-plus"> </v-btn>
-              <v-btn class="mr-4" color="black" icon="mdi-thumb-up-outline">
+              <v-btn class="mr-4" color="black" icon="mdi-plus" rounded="lg">
               </v-btn>
-              <v-btn class="mr-4" color="black" icon="mdi-heart-outline">
+              <v-btn
+                class="mr-4"
+                color="black"
+                icon="mdi-thumb-up-outline"
+                rounded="lg"
+              >
+              </v-btn>
+              <v-btn
+                class="mr-4"
+                color="black"
+                icon="mdi-heart-outline"
+                rounded="lg"
+              >
               </v-btn>
             </v-btn-group>
           </div>
@@ -50,7 +61,7 @@ const ListMovies = ref([]) as Ref<any[]>
 onMounted(async () => {
   try {
     const { data } = await $api.get('/movie/popular?language=vi-VI&page=1')
-    ListMovies.value = data.results.slice(3, 6)
+    ListMovies.value = data.results.slice(1, 4)
   } catch (error) {
     console.log(error)
   }

@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <v-container>
+  <div class="">
+    <v-container fluid>
       <v-row>
-        <v-col cols="12">
-          <DetailBackdrop :movie="movie" />
-        </v-col>
         <v-col cols="12">
           <v-breadcrumbs
             bg-color="#1e1e1e"
@@ -18,14 +15,18 @@
             <v-breadcrumbs-item :to="`/movie/${movie.id}`">
               {{ movie.title }}
             </v-breadcrumbs-item>
+            <v-breadcrumbs-divider></v-breadcrumbs-divider>
+            <v-breadcrumbs-item>Watching</v-breadcrumbs-item>
           </v-breadcrumbs>
         </v-col>
-        <v-col md="8" sm="12">
-          <DetailDescription :movie="movie" />
-          <DetailCast :credit="movie?.credits" />
-        </v-col>
-        <v-col md="4" sm="12">
-          <DetailDescription :movie="movie" />
+        <v-col cols="12">
+          <iframe
+            :src="streamingLink"
+            width="100%"
+            height="500"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </v-col>
       </v-row>
     </v-container>
@@ -33,10 +34,12 @@
 </template>
 
 <script setup lang="ts">
-const { $api } = useNuxtApp() as any
 const router = useRoute()
 const id = ref(router.params.id)
-
+const streamingLink = ref(
+  `https://vidsrc.xyz/embed/movie?tmdb=${id.value}&ds_lang=vi`
+)
+const { $api } = useNuxtApp() as any
 const movie = ref({}) as Ref<any>
 onMounted(async () => {
   try {

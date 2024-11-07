@@ -16,6 +16,9 @@
             <template #popular>
               <HomeMovieCardPopular />
             </template>
+            <template #topTrending>
+              <HomeMovieCardTopTrending />
+            </template>
             <template #topRated>
               <HomeMovieCardTopRated />
             </template>
@@ -61,12 +64,16 @@ const ListTitle = ref<Title[]>([
     slot: 'popular'
   },
   {
-    title: 'Top Rated',
-    slot: 'topRated'
+    title: 'Top Trending',
+    slot: 'topTrending'
   },
   {
     title: 'New Release',
     slot: 'newRelease'
+  },
+  {
+    title: 'Top Rated',
+    slot: 'topRated'
   }
 ])
 </script>

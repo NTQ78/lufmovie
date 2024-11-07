@@ -1,9 +1,10 @@
 <template>
-  <v-app>
+  <v-app class="d-flex justify-space-between align-center">
     <Header />
     <v-main>
       <nuxt-page />
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
