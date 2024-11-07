@@ -33,6 +33,13 @@
             ></iframe>
           </div>
         </v-col>
+        <v-col md="8" sm="12">
+          <DetailDescription :movie="movie" />
+          <watching-recommend :movie="movie?.recommendations" />
+        </v-col>
+        <v-col md="4" sm="12">
+          <DetailInformation :movie="movie" />
+        </v-col>
       </v-row>
     </v-container>
   </div>
@@ -63,6 +70,15 @@ onMounted(async () => {
       `/movie/${id.value}?language=vi-VI&append_to_response=videos,credits,reviews,similar,recommendations,ratings`
     )
     movie.value = data
+    useHead({
+      title: movie.value.title,
+      meta: [
+        {
+          name: 'description',
+          content: movie.value.overview
+        }
+      ]
+    })
   } catch (error) {
     console.log(error)
   }

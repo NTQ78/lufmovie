@@ -39,7 +39,7 @@ import { useRouter } from 'vue-router'
 import type { Title } from '~/types/movies'
 
 // title of the page
-const pageTitle = 'My Page'
+const pageTitle = 'Home'
 useHead({
   title: pageTitle,
   meta: [
