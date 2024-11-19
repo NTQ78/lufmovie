@@ -5,6 +5,7 @@
         <img src="images/logo.png" alt="Logo" /></div
     ></nuxt-link>
     <v-text-field
+      v-model="searchQuery"
       class="text-field"
       append-inner-icon="mdi-magnify"
       density="compact"
@@ -15,6 +16,7 @@
       color="#ffffff"
       bg-color="transparent"
       base-color="#ffffff"
+      @keydown.enter.prevent="debouncedSearch"
     >
       <template #label>
         <span class="text-white text-body-2">What do you want to watch?</span>
@@ -57,6 +59,7 @@
           <v-list-subheader>Search</v-list-subheader>
           <div class="px-4 mb-4">
             <v-text-field
+              v-model="searchQuery"
               append-inner-icon="mdi-magnify"
               density="compact"
               variant="outlined"
@@ -65,6 +68,7 @@
               color="primary"
               bg-color="transparent"
               base-color="#ffffff"
+              @keydown.enter.prevent="debouncedSearch"
             >
               <template #label>
                 <span class="text-white text-body-2"
@@ -117,7 +121,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useTheme } from 'vuetify'
+import { useRouter } from 'vue-router'
+import _ from 'lodash'
 
 const notifications = ref(false)
 const sound = ref(false)
@@ -125,10 +130,20 @@ const widgets = ref(false)
 
 const isMenuOpen = ref(false)
 
+const router = useRouter()
+
+const searchQuery = ref('')
+const searchMovies = () => {
+  if (searchQuery.value.trim()) {
+    router.push({ path: '/search', query: { q: searchQuery.value } })
+  }
+  isMenuOpen.value = false
+}
+const debouncedSearch = _.debounce(searchMovies, 300)
+
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
-
 onMounted(() => {
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {

@@ -18,7 +18,7 @@
               :width="display.xs.value ? 85 : 'auto'"
               height="auto"
               gradient="to top, rgba(0,0,0,.9), rgba(0,0,0,.1)"
-              lazy-src="https://picsum.photos/id/63/5000/2813"
+              lazy-src="https://picsum.photos/200/300"
               cover
               transition="scale-transition"
             >
@@ -33,7 +33,7 @@
 
               <div class="content">
                 <div class="title">
-                  <v-chip>
+                  <v-chip size="small">
                     {{ item.character }}
                   </v-chip>
                 </div>

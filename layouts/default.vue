@@ -1,5 +1,5 @@
 <template>
-  <v-app class="d-flex justify-space-between align-center">
+  <v-app class="d-flex align-center justify-space-between">
     <Header />
     <v-main>
       <nuxt-page />
@@ -8,11 +8,7 @@
   </v-app>
 </template>
 
-<script setup>
-useHead({
-  title: 'My Nuxt App'
-})
-</script>
+<script setup></script>
 
 <style>
 /* Add any custom styles here */

@@ -9,6 +9,7 @@
             :key="item.title"
             :pageTitle="item.title"
             :slot="item.slot"
+            :showBtn="item.showBtn"
           >
             <template #genre>
               <HomeMovieCardGenres />
@@ -34,12 +35,11 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { useIntersectionObserver } from '~/composables/useIntersectionObserver'
-import { useRouter } from 'vue-router'
+
 import type { Title } from '~/types/movies'
 
 // title of the page
-const pageTitle = 'Home'
+const pageTitle: string = 'Home'
 useHead({
   title: pageTitle,
   meta: [
@@ -57,23 +57,28 @@ useSeoMeta({
 const ListTitle = ref<Title[]>([
   {
     title: 'Our Genres',
-    slot: 'genre'
+    slot: 'genre',
+    showBtn: false
   },
   {
     title: 'Popular Top 10 In Genres',
-    slot: 'popular'
+    slot: 'popular',
+    showBtn: false
   },
   {
     title: 'Top Trending',
-    slot: 'topTrending'
+    slot: 'topTrending',
+    showBtn: true
   },
   {
     title: 'New Release',
-    slot: 'newRelease'
+    slot: 'newRelease',
+    showBtn: true
   },
   {
     title: 'Top Rated',
-    slot: 'topRated'
+    slot: 'topRated',
+    showBtn: true
   }
 ])
 </script>

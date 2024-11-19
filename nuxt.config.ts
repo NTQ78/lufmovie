@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify']
   },
-
+  css: ['./assets/css/global.css', 'animate.css/animate.min.css'],
   ssr: true,
   devtools: { enabled: true },
 
@@ -29,8 +29,12 @@ export default defineNuxtConfig({
       prerender: true
     }
   },
+  runtimeConfig: {
+    public: {
+      TMDB_API_KEY: process.env.TMDB_API_KEY
+    }
+  },
 
-  css: ['./assets/css/global.css', 'animate.css/animate.min.css'],
   plugins: ['~/plugins/axios.ts'],
   vite: {
     vue: {
