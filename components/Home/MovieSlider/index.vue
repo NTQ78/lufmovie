@@ -16,6 +16,9 @@
               View All
               <v-icon class="ml-1"> mdi-chevron-triple-right </v-icon>
             </v-btn>
+            <div v-show="!showBtn" class="icon_slider">
+              <v-icon size="small"> mdi-chevron-triple-right </v-icon>
+            </div>
           </div>
         </v-col>
         <v-col cols="12">
@@ -32,7 +35,24 @@ const props = defineProps<{
   slot: string
   showBtn?: boolean
 }>()
-const { pageTitle, slot, showBtn } = toRefs(props)
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.icon_slider:deep() {
+  .v-icon {
+    margin-right: 20px;
+    animation: identifier 3s infinite;
+  }
+}
+@keyframes identifier {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+</style>
