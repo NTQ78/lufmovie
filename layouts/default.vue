@@ -8,7 +8,13 @@
   </v-app>
 </template>
 
-<script setup></script>
+<script setup>
+useHead({
+  titleTemplate: (titleChunk) => {
+    return titleChunk ? `${titleChunk} - Luf Movie` : 'Luf Movie'
+  }
+})
+</script>
 
 <style>
 /* Add any custom styles here */

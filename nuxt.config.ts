@@ -1,6 +1,8 @@
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import { fileURLToPath } from 'url'
 
+const tmdbApiKey = process.env.TMDB_API_KEY
+
 export default defineNuxtConfig({
   alias: {
     images: fileURLToPath(new URL('./assets/images', import.meta.url)),
@@ -31,7 +33,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      TMDB_API_KEY: process.env.TMDB_API_KEY
+      TMDB_API_KEY: tmdbApiKey
     }
   },
 
