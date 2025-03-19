@@ -50,7 +50,7 @@ const search = async () => {
     loading.value = true
 
     const { data } = await $api.get(
-      `/search/movie?query=${route.query.q}&language=vi-VI&page=${page.value}`
+      `/search/movie?query=${route.query.q}&language=en-EN&page=${page.value}`
     )
 
     results.value = data.results

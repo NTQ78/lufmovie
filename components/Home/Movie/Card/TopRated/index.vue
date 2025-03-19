@@ -70,7 +70,7 @@ const checkDisplaySize = () => {
 
 const getListRated = async () => {
   try {
-    const { data } = await $api.get('/movie/top_rated?language=vi-VI&page=1')
+    const { data } = await $api.get('/movie/top_rated?language=en-EN&page=1')
     //slice and randomize the genres
     ListRated.value = data.results
   } catch (error) {

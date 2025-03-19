@@ -76,7 +76,7 @@ const checkDisplaySize = () => {
 
 const getListGenres = async () => {
   try {
-    const { data } = await $api.get('/genre/movie/list?language=vi-VI')
+    const { data } = await $api.get('/genre/movie/list?language=en-EN')
 
     ListGenres.value = data.genres.slice(0, 10).sort(() => Math.random() - 0.5)
   } catch (error) {

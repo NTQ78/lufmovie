@@ -1,5 +1,6 @@
 <template>
   <v-app class="d-flex align-center justify-space-between">
+    <NuxtLoadingIndicator />
     <Header />
     <v-main>
       <nuxt-page />

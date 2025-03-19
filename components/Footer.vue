@@ -213,7 +213,7 @@
         <div class="footer-copyright-wrapper">
           <p class="footer-copyright-text">
             <a class="footer-copyright-link" href="#" target="_self">
-              Copyright ©2024 | All rights reserved | Designed by QUOCNGUYEN
+              Copyright ©2024 | All rights reserved
             </a>
           </p>
         </div>

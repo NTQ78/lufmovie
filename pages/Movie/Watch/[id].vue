@@ -76,7 +76,7 @@ onMounted(async () => {
   }
   try {
     const { data } = await $api.get(
-      `/movie/${id.value}?language=vi-VI&append_to_response=videos,credits,reviews,similar,recommendations,ratings`
+      `/movie/${id.value}?language=en-EN&append_to_response=videos,credits,reviews,similar,recommendations,ratings`
     )
     movie.value = data
     useHead({

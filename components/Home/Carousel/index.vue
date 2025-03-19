@@ -73,7 +73,7 @@ const display = useDisplay()
 
 onMounted(async () => {
   try {
-    const { data } = await $api.get('/movie/popular?language=vi-VI&page=1')
+    const { data } = await $api.get('/movie/popular?language=en-EN&page=1')
     ListMovies.value = data.results.slice(0, 3)
   } catch (error) {
     console.log(error)

@@ -72,7 +72,7 @@ const checkDisplaySize = () => {
 
 const getListGenres = async () => {
   try {
-    const { data } = await $api.get('/genre/movie/list?language=vi-VI')
+    const { data } = await $api.get('/genre/movie/list?language=en-EN')
 
     ListGenres.value = data.genres
   } catch (error) {
